@@ -37,7 +37,7 @@ const dataProduct =[
     }
 ]
 
-let totalCart = 0;
+let totalCart = 0, pajak=0;
 const resultData =[]
 function addObjectToArray(obj) {
     resultData.push(obj);
@@ -81,10 +81,14 @@ function generateData(){
         total = total + result.jumlah;
 
     });
-
-    totalCart = total
+    pajak = total * 11/100
+    totalCart = total+pajak;
     const totalCartElement = document.getElementById('total-cart');
-    totalCartElement.textContent = `Total: ${totalCart}`;
+    totalCartElement.textContent = `Total: Rp.${total}`;
+    const pajakCartElement = document.getElementById('pajak');
+    pajakCartElement.textContent = `Pajak 11% : Rp.${pajak}`;
+    const finalCartElement = document.getElementById('final-cart');
+    finalCartElement.textContent = `Harga Akhir: Rp.${totalCart}`;
 }
 
 
